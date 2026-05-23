@@ -24,7 +24,7 @@ const Header = () => {
         setOpenMenu(!openMenu);
     };
   return (
-    <header className="flex items-center justify-between shadow px-40 py-3">
+    <header className="w-full flex items-center justify-between shadow  px-4 lg:px-40 py-3">
         {/* left header */}
         <div className="flex items-center gap-3">
             {/* logo */}
@@ -34,10 +34,10 @@ const Header = () => {
             {/* app name */}
             <div className="flex flex-col">
                 <h1 className="font-bold text-lg">Let Space</h1>
-                <h3 className="text-sm text-gray-500">Gestion immobilère</h3>
+                <h3 className="hidden lg:block text-sm text-gray-500">Gestion immobilère</h3>
             </div>
             {/* role */}
-            <div className="bg-gradient-to-r from-red-600 to-pink-700 rounded-lg">
+            <div className="hidden lg:block bg-gradient-to-r from-red-600 to-pink-700 rounded-lg">
                 <h2 className="text-white text-sm m-1 text-center"> Administrateur</h2>
             </div>
         </div>
@@ -52,7 +52,7 @@ const Header = () => {
                 </div>
             </div>
             <div 
-                className="flex items-center gap-3 hover:bg-gray-200 hover:rounded-full p-2 cursor-pointer"
+                className="flex items-center justify-center lg:gap-3 hover:bg-gray-200 hover:rounded-full p-2 cursor-pointer"
                 onClick={handleOpenMenu}
                 ref={menuRef}
             >
@@ -60,16 +60,16 @@ const Header = () => {
                     <h3 className="text-white font-bold text-sm text-center">AU</h3>
                 </div>
                 <div className="flex flex-col">
-                    <h1 className="font-light text-sm">Admin User</h1>
-                    <h3 className="text-sm text-gray-500">admin@gmail.com</h3>
+                    <h1 className="hidden lg:block font-light text-sm">Admin User</h1>
+                    <h3 className="hidden lg:block text-sm text-gray-500">admin@gmail.com</h3>
                 </div>
-                <div>
+                <div className="hidden lg:block">
                     <ChevronDown className="h-5 w-5" />
                 </div>
             </div>
             {
                 openMenu && (
-                    <div className="absolute bg-white shadow-md rounded-sm border-gray-500 w-full top-16 left-0 z-10 p-3">
+                    <div className="absolute bg-white shadow-md rounded-sm border-gray-500 w-auto lg:w-full top-16 -left-24 lg:left-0 z-10 p-3">
                         <div className="flex items-center gap-5 px-5 border-b-2">
                             <div className="bg-gradient-to-br from-blue-600/90 to-purple-700/90 rounded-full p-2">
                                 <h3 className="text-white font-bold text-sm text-center">AU</h3>

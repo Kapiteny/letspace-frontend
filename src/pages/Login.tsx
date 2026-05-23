@@ -54,7 +54,7 @@ const Login = () => {
             </div>
         </div>
         {/* right side */}
-        <div className='w-full lg:w-1/2 flex justify-center items-center bg-gradient-to-br from-gray-50 to-white'>
+        <div className='w-full m-4 lg:w-1/2 flex justify-center items-center bg-gradient-to-br from-gray-50 to-white'>
             <div className='max-w-md w-full rounded border p-6 shadow-lg bg-white'>
                 {/* card header */}
                 <div className='flex items-center flex-col mb-6 gap-2'>
