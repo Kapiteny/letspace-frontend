@@ -1,8 +1,10 @@
 import { Building2, CalendarDays, Home, Wallet,Eye,EyeOff } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -61,7 +63,7 @@ const Login = () => {
                 </div>
                 {/* card content */}
                 <div className='text-sm'>
-                    <form>
+                    <form onSubmit={() => navigate('/dashboard')}>
                         <div className='flex flex-col gap-1 mb-2'>
                             <label>Adresse email</label>
                             <input className='border rounded-md border-gray-500 text-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ' type="text" placeholder='exemple@gmail.com'/>
