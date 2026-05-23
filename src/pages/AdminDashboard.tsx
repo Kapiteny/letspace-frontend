@@ -1,4 +1,4 @@
-import { BarChart3, Building2, CreditCard, Users } from 'lucide-react'
+import { BarChart3, Building2, CreditCard, MonitorCog, Sparkles, TicketX, UserLock, Users } from 'lucide-react'
 import Header from '../components/Header'
 
 const AdminDashboard = () => {
@@ -52,6 +52,37 @@ const AdminDashboard = () => {
                     <div className='mt-5'>
                         <p className='text-3xl font-bold text-orange-900'>30%</p>
                     </div>
+                </div>
+            </div>
+            {/* stats users */}
+            <div className='mt-5 grid grid-cols-1 lg:grid-cols-4 gap-4'>
+                <div className='bg-white rounded-xl shadow-md p-5 flex items-center justify-between'>
+                    <div>
+                        <p className='text-sm text-gray-500'>Manager</p>
+                        <p className='text-lg font-bold text-gray-900'>12</p>
+                    </div>
+                    <MonitorCog className="h-8 w-8 text-blue-500" />
+                </div>
+                <div className='bg-white rounded-xl shadow-md p-5 flex items-center justify-between'>
+                    <div>
+                        <p className='text-sm text-gray-500'>Locataires</p>
+                        <p className='text-lg font-bold text-gray-900'>1250</p>
+                    </div>
+                    <Sparkles className="h-8 w-8 text-yellow-500" />
+                </div>
+                <div className='bg-white rounded-xl shadow-md p-5 flex items-center justify-between'>
+                    <div>
+                        <p className='text-sm text-gray-500'>Propriétaires</p>
+                        <p className='text-lg font-bold text-gray-900'>213</p>
+                    </div>
+                    <UserLock className="h-8 w-8 text-green-500" />
+                </div>
+                <div className='bg-white rounded-xl shadow-md p-5 flex items-center justify-between'>
+                    <div>
+                        <p className='text-sm text-gray-500'>En renovation</p>
+                        <p className='text-lg font-bold text-gray-900'>94</p>
+                    </div>
+                    <TicketX className="h-8 w-8 text-red-600" />
                 </div>
             </div>
         </div>
