@@ -24,7 +24,7 @@ const Header = () => {
         setOpenMenu(!openMenu);
     };
   return (
-    <header className="w-full flex items-center justify-between shadow  px-4 lg:px-40 py-3">
+    <header className="w-full fixed bg-white flex items-center justify-between shadow top-0  px-4 lg:px-40 py-3">
         {/* left header */}
         <div className="flex items-center gap-3">
             {/* logo */}
