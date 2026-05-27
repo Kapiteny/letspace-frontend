@@ -1,5 +1,6 @@
 import { Building2, Edit, Eye, Plus, Trash2 } from 'lucide-react'
 import properties, { type Tstatus } from '../data/properties-mock-data'
+import { formatCurrency } from '../utils/formatCurrency'
 
 const statusBadge: Record<Tstatus, string> = {
     Available: "text-green-700 border-green-200 bg-green-100",
@@ -53,7 +54,7 @@ const Properties = () => {
                                                 <p>{property.address}</p>
                                             </div>
                                         </td>
-                                        <td className='whitespace-nowrap p-3 text-green-700 font-semibold'>{property.loyer} Ar</td>
+                                        <td className='whitespace-nowrap p-3 text-green-700 font-semibold'>{ formatCurrency(property.loyer)}</td>
                                         <td className='whitespace-nowrap p-3'>{property.owner}</td>
                                         <td className='whitespace-nowrap p-3'>{property.manager}</td>
                                         <td className='whitespace-nowrap p-3'>

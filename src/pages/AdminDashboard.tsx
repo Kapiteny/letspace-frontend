@@ -1,4 +1,4 @@
-import { BarChart3, Building2, CreditCard, Edit, Eye, FolderOpenDot, MonitorCog, Plus, Sparkles, TicketX, Trash2, UserLock, Users, WalletCards, type LucideIcon } from 'lucide-react'
+import { BarChart3, Building2, CreditCard, FolderOpenDot, MonitorCog, Sparkles, TicketX, UserLock, Users, WalletCards, type LucideIcon } from 'lucide-react'
 import Header from '../components/Header'
 import { useState } from 'react'
 import Properties from '../components/Properties'
