@@ -1,3 +1,5 @@
-export const formatCurrency = (value: number) => {
-    return value.toLocaleString("fr-FR") + "Ar"
+export const formatCurrency = (value: string) => {
+    return Number(value)
+        .toLocaleString("fr-FR")
+        .replace(/\s/g, " ") + " Ar";
 }

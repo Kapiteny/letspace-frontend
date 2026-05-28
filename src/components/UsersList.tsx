@@ -1,5 +1,6 @@
 import { CheckCircle, Clock, Edit, Eye, MailPlus, Trash2, User, XCircle, type LucideIcon } from 'lucide-react'
-import usersData, { type TUserRole, type TUserStatus } from '../data/users-mock-data'
+import usersData from '../data/users-mock-data'
+import type { TUserRole, TUserStatus } from '../types';
 
 type Badge = {
     label: string; 

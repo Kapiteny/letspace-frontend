@@ -1,16 +1,4 @@
-export type TUserStatus = "PENDING" | "ACTIVE" | "SUSPENDED";
-
-export type TUserRole = "ADMIN" | "MANAGER" | "OWNER" | "TENANT";
-
-
-interface IUsers {
-    id: string;
-    email: string;
-    username: string;
-    role: TUserRole;
-    status: TUserStatus;
-    image: string;
-}
+import type { IUsers } from "../types";
 
 const usersData: IUsers[] = [
     {
