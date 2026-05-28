@@ -2,6 +2,7 @@ import { BarChart3, Building2, CreditCard, FolderOpenDot, MonitorCog, Sparkles, 
 import Header from '../components/Header'
 import { useState } from 'react'
 import Properties from '../components/Properties'
+import UsersList from '../components/UsersList'
 
 type menuItem = {
     title: string,
@@ -142,11 +143,7 @@ const AdminDashboard = () => {
                 }
 
                 {
-                    menu == "Utilisateurs" && (
-                        <div className='mt-5'>
-                            Propriétes
-                        </div>
-                    )
+                    menu == "Utilisateurs" && <UsersList/>
                 }
 
                 {

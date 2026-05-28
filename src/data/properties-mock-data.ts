@@ -1,6 +1,6 @@
 export type Tstatus = | "Available" | "Occupied" | "Reserved";
 
-interface PropertiesType  {
+interface IProperties  {
     description: string;
     city: string;
     address: string;
@@ -13,7 +13,7 @@ interface PropertiesType  {
     image: string;
 }
 
-const properties: PropertiesType[] = [
+const properties: IProperties[] = [
     {
         description: "Appartement de luxe Ankerana - Antananarivo",
         city: "Ankerana",
