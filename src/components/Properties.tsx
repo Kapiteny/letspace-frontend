@@ -1,11 +1,17 @@
 import { Building2, Edit, Eye, Plus, Trash2 } from 'lucide-react'
-import properties, { type Tstatus } from '../data/properties-mock-data'
+import properties from '../data/properties-mock-data'
 import { formatCurrency } from '../utils/formatCurrency'
+import type { Tstatus } from '../types'
 
-const statusBadge: Record<Tstatus, string> = {
-    Available: "text-green-700 border-green-200 bg-green-100",
-    Reserved: "text-yellow-700 border-yellow-200 bg-yellow-100",
-    Occupied: "text-red-700 border-red-200 bg-red-100"
+type Badge = {
+    label: string;
+    class: string;
+}
+
+const statusBadge: Record<Tstatus, Badge> = {
+    AVAILABLE: {label:"Disponible", class: "text-green-700 border-green-200 bg-green-100"},
+    RESERVED: {label:"Reservé", class: "text-yellow-700 border-yellow-200 bg-yellow-100"},
+    OCCUPED: {label:"Occupé", class: "text-red-700 border-red-200 bg-red-100"}
 }
 
 const Properties = () => {
@@ -54,11 +60,11 @@ const Properties = () => {
                                         </div>
                                     </td>
                                     <td className='whitespace-nowrap p-3 text-green-700 font-semibold'>{ formatCurrency(property.loyer)}</td>
-                                    <td className='whitespace-nowrap p-3'>{property.owner}</td>
-                                    <td className='whitespace-nowrap p-3'>{property.manager}</td>
+                                    <td className='whitespace-nowrap p-3'>{property.owner.username}</td>
+                                    <td className='whitespace-nowrap p-3'>{property.manager ? property.manager.username : "Admin"}</td>
                                     <td className='whitespace-nowrap p-3'>
-                                        <div className={`w-fit  ${statusBadge[property.status]} border p-1 rounded-lg`}>
-                                            <p>{property.status}</p>
+                                        <div className={`w-fit  ${statusBadge[property.status].class} border p-1 rounded-lg`}>
+                                            <p>{statusBadge[property.status].label}</p>
                                         </div>
                                     </td>
                                     <td className='p-3'>

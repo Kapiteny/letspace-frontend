@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import { useState } from 'react'
 import Properties from '../components/Properties'
 import UsersList from '../components/UsersList'
+import Leases from '../components/Leases'
 
 type menuItem = {
     title: string,
@@ -147,11 +148,7 @@ const AdminDashboard = () => {
                 }
 
                 {
-                    menu == "Contrats" && (
-                        <div>
-                            Contrats
-                        </div>
-                    )
+                    menu == "Contrats" && <Leases/>
                 }
 
                 {

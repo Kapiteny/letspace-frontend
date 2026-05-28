@@ -1,55 +1,78 @@
-export type Tstatus = | "Available" | "Occupied" | "Reserved";
-
-interface IProperties  {
-    description: string;
-    city: string;
-    address: string;
-    loyer: number;
-    caution: number;
-    status: Tstatus;
-    owner: string;
-    manager: string;
-    rooms: number;
-    image: string;
-}
+import type { IProperties } from "../types";
 
 const properties: IProperties[] = [
     {
+        id: "d5e7ca6b-879b-4f96-9526-962868ad785e",
+        owner: {
+            id: "c1d673d9-5e70-4831-8e8b-7919cfbc4450",
+            email: "user4@gmail.com",
+            username: "users4",
+            role: "OWNER",
+            status: "PENDING",
+            image: null
+        },
+        manager: null,
         description: "Appartement de luxe Ankerana - Antananarivo",
-        city: "Ankerana",
-        address: "Lot 001 - Ankerana Tana",
-        loyer: 1500000,
-        caution: 0,
-        status: "Available",
-        owner: "Jean De Dieu",
-        manager: "Marc D.",
-        rooms: 4,
-        image: ""
-    },
-    {
-        description: "Maison à petit chambre avec terrasse",
-        city: "Ambohibao",
-        address: "Lot 021 - Ambohibao ",
-        loyer: 350000,
-        caution: 100000,
-        status: "Reserved",
-        owner: "Jim Leclerc",
-        manager: "Julie M.",
-        rooms: 4,
-        image: ""
-    },
-    {
-        description: "Maison de luxe Ankorondrano",
-        city: "Ankorondrano",
         address: "Lot 005 - Ankorondrano",
-        loyer: 500000,
-        caution: 300000,
-        status: "Occupied",
-        owner: "Lita kely",
-        manager: "Marc D.",
+        city: "tana",
+        loyer: "500000.80",
+        caution: null,
+        devise: "MGA",
+        status: "AVAILABLE",
+        type: "HOUSE",
         rooms: 4,
-        image: ""
+        image: null,
+        created_at: "2026-04-12T16:08:54.523553Z",
+        updated_at: "2026-04-12T16:08:54.523746Z"
     },
+    {
+        id: "d5e7ca6b-879b-4f96-9526-962868ad785e",
+        owner: {
+            id: "c1d673d9-5e70-4831-8e8b-7919cfbc4450",
+            email: "user4@gmail.com",
+            username: "users4",
+            role: "OWNER",
+            status: "PENDING",
+            image: null
+        },
+        manager: null,
+        description: "Maison à petit chambre avec terrasse",
+        address: "Lot 021 - Ambohibao",
+        city: "tana",
+        loyer: "500000.00",
+        caution: null,
+        devise: "MGA",
+        status: "RESERVED",
+        type: "HOUSE",
+        rooms: 4,
+        image: null,
+        created_at: "2026-04-12T16:08:54.523553Z",
+        updated_at: "2026-04-12T16:08:54.523746Z"
+    },
+    {
+        id: "d5e7ca6b-879b-4f96-9526-962868ad785e",
+        owner: {
+            id: "c1d673d9-5e70-4831-8e8b-7919cfbc4450",
+            email: "user4@gmail.com",
+            username: "users4",
+            role: "OWNER",
+            status: "PENDING",
+            image: null
+        },
+        manager: null,
+        description: "Maison à petit chambre avec terrasse",
+        address: "Lot 021 - Ambohibao",
+        city: "tana",
+        loyer: "500000.00",
+        caution: null,
+        devise: "MGA",
+        status: "OCCUPED",
+        type: "HOUSE",
+        rooms: 4,
+        image: null,
+        created_at: "2026-04-12T16:08:54.523553Z",
+        updated_at: "2026-04-12T16:08:54.523746Z"
+    }
 ]
 
 export default properties;
