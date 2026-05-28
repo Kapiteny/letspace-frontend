@@ -8,6 +8,7 @@ const Header = () => {
     useEffect(() => {
         const handleCloseMenu = (e: MouseEvent) => {
             // console.log(menuRef.current.contains(e.target as Node))
+            console.log(e)
             if (menuRef.current) {
                 setOpenMenu(false);
             };

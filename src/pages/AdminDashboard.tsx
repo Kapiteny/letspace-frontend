@@ -1,6 +1,8 @@
-import { BarChart3, Building2, CreditCard, Edit, Eye, FolderOpenDot, MonitorCog, Sparkles, TicketX, Trash2, UserLock, Users, WalletCards, type LucideIcon } from 'lucide-react'
+import { BarChart3, Building2, CreditCard, FolderOpenDot, MonitorCog, Sparkles, TicketX, UserLock, Users, WalletCards, type LucideIcon } from 'lucide-react'
 import Header from '../components/Header'
 import { useState } from 'react'
+import Properties from '../components/Properties'
+import UsersList from '../components/UsersList'
 
 type menuItem = {
     title: string,
@@ -137,111 +139,11 @@ const AdminDashboard = () => {
                 </div>
 
                 {
-                    menu == "Propriétés" && (
-                        <div className='mt-5 lg:mt-10 shadow-lg border rounded-lg bg-white'>
-                            {/* description, type, proprietaire, manager, loyer, status, city */}
-                            <div className='bg-gradient-to-r from-blue-50 to-cyan-50 p-3'>
-                                <div className='flex items-center gap-2'>
-                                    <Building2 className="h-5 w-5 text-blue-500" />
-                                    <h3 className='text-sm'>Gestion des propriétés</h3>
-                                </div>
-                                <h3 className='text-sm text-gray-500 mt-1'>Liste de tous les propriétes sur <span>Let Space</span></h3>
-                            </div>
-
-                            <div className='bg-white'>
-                                <div className='overflow-x-auto'>
-                                    <table className='w-full'>
-                                        <thead className='font-semibold text-sm bg-gray-50 border-b-gray-200 border-b'>
-                                            <tr>
-                                                <th className='text-left p-3'>Description</th>
-                                                <th className='text-left p-3'>City</th>
-                                                <th className='text-left p-3'>Type</th>
-                                                <th className=' text-left p-3'>Loyer(Ar/mois)</th>
-                                                <th className='text-left p-3'>Propriétaire</th>
-                                                <th className='text-left p-3'>Manager</th>
-                                                <th className='text-left p-3'>Status</th>
-                                                <th className='text-center p-3'>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className='text-xs md:text-sm lg:text-sm'>
-                                            <tr className='border-b-gray-200 border-b hover:bg-gray-50'>
-                                                <td className='whitespace-nowrap p-3'>Appartement de luxe Antaninarenina</td>
-                                                <td className='whitespace-nowrap p-3' >Antananarivo</td>
-                                                <td className='whitespace-nowrap p-3 '>
-                                                   <div className=' w-fit bg-blue-50 text-blue-700 border border-blue-200 p-1 rounded-lg'>
-                                                        <p>Appartement</p>
-                                                   </div>
-                                                </td>
-                                                <td className='whitespace-nowrap p-3'> 1 500 000 Ar</td>
-                                                <td className='whitespace-nowrap p-3'>Jean de Dieu</td>
-                                                <td className='whitespace-nowrap p-3'>Lita M.</td>
-                                                <td className='whitespace-nowrap p-3'>
-                                                    <div className=' w-fit bg-green-100 text-green-800 border-green-200 border p-1 rounded-lg'>
-                                                        <p>Available</p>
-                                                   </div>
-                                                </td>
-                                                <td className='p-3'>
-                                                    <div className='flex items-center gap-3 justify-center'>
-                                                        <button className="p-1 lg:p-2 rounded-lg bg-white shadow border hover:bg-blue-50 hover:border-blue-200">
-                                                            <Eye className="h-4 w-4 text-blue-600" />
-                                                        </button>
-                                                        <button className="p-1 lg:p-2 rounded-lg bg-white shadow border hover:bg-blue-50 hover:border-blue-200">
-                                                            <Edit className="h-4 w-4 text-green-600" />
-                                                        </button>
-                                                        <button className="p-1 lg:p-2 rounded-lg bg-white shadow border hover:bg-blue-50 hover:border-blue-200">
-                                                            <Trash2 className="h-4 w-4 text-red-600" />
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className='whitespace-nowrap p-3'>Appartement de luxe Antaninarenina</td>
-                                                <td className='whitespace-nowrap p-3' >Antananarivo</td>
-                                                <td className='whitespace-nowrap p-3 '>
-                                                   <div className=' w-fit bg-blue-50 text-blue-700 border border-blue-200 p-1 rounded-lg'>
-                                                        <p>Maison</p>
-                                                   </div>
-                                                </td>
-                                                <td className='whitespace-nowrap p-3'>400 000 Ar</td>
-                                                <td className='whitespace-nowrap p-3'>Leclerc K.</td>
-                                                <td className='whitespace-nowrap p-3'>Julie D.</td>
-                                                <td className='whitespace-nowrap p-3'>
-                                                    <div className=' w-fit bg-red-100 text-red-700 border-red-200 border p-1 rounded-lg'>
-                                                        <p>Occuped</p>
-                                                   </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className='whitespace-nowrap p-3'>Appartement de luxe Antaninarenina</td>
-                                                <td className='whitespace-nowrap p-3' >Antananarivo</td>
-                                                <td className='whitespace-nowrap p-3 '>
-                                                   <div className=' w-fit bg-blue-50 text-blue-700 border border-blue-200 p-1 rounded-lg'>
-                                                        <p>Maison</p>
-                                                   </div>
-                                                </td>
-                                                <td className='whitespace-nowrap p-3'>300 000 Ar</td>
-                                                <td className='whitespace-nowrap p-3'>Marc T.</td>
-                                                <td className='whitespace-nowrap p-3'>Koto D.</td>
-                                                <td className='whitespace-nowrap p-3'>
-                                                    <div className=' w-fit bg-yellow-100 text-yellow-700 border-yellow-200 border p-1 rounded-lg'>
-                                                        <p>Reserved</p>
-                                                   </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    )
+                    menu == "Propriétés" && <Properties/>
                 }
 
                 {
-                    menu == "Utilisateurs" && (
-                        <div className='mt-5'>
-                            Propriétes
-                        </div>
-                    )
+                    menu == "Utilisateurs" && <UsersList/>
                 }
 
                 {
