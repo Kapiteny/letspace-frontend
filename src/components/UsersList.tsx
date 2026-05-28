@@ -1,17 +1,18 @@
-import { Building2, Edit, Eye, MailPlus, Plus, Trash2, User } from 'lucide-react'
+import { CheckCircle, Clock, Edit, Eye, MailPlus, Trash2, User, XCircle, type LucideIcon } from 'lucide-react'
 import usersData, { type TUserRole, type TUserStatus } from '../data/users-mock-data'
 
-const statusBadge: Record<TUserStatus, string> = {
-    ACTIVE: "text-green-700 border-green-200 bg-green-100",
-    PENDING: "text-yellow-700 border-yellow-200 bg-yellow-100",
-    SUSPENDED: "text-red-700 border-red-200 bg-red-100"
+type Badge = {
+    label: string; 
+    class: string; 
+    icon: LucideIcon;
 }
 
-const statusLabel: Record<TUserStatus, string> = {
-    ACTIVE: "Active",
-    PENDING: "En attente",
-    SUSPENDED: "Suspendu"
+const statusBadge: Record<TUserStatus, Badge> = {
+    ACTIVE: {label: "Active" , class: "text-green-700 border-green-200 bg-green-100", icon: CheckCircle},
+    PENDING: {label: "En attente", class:"text-yellow-700 border-yellow-200 bg-yellow-100" , icon: Clock},
+    SUSPENDED: {label: "Suspendu", class: "text-red-700 border-red-200 bg-red-100", icon: XCircle}
 }
+
 
 const roleLabel: Record<TUserRole, string> = {
     ADMIN: "admin",
@@ -51,7 +52,7 @@ const UsersList = () => {
                 <tbody className='text-xs md:text-sm lg:text-sm'>
                     {
                         usersData.map(user => {
-                            console.log(user.status)
+                            const Icon = statusBadge[user.status].icon;
                             return (
                                 <tr className='border-b-gray-200 border-b hover:bg-gray-50'>
                                     <td className='whitespace-nowrap p-3'>{user.username}</td>
@@ -63,8 +64,9 @@ const UsersList = () => {
                                     <td className='whitespace-nowrap p-3' >{user.email}</td>
                                     {/* <td className='whitespace-nowrap p-3'>{user.status}</td> */}
                                     <td className='whitespace-nowrap p-3'>
-                                        <div className={`w-fit  ${statusBadge[user.status]} border p-1 rounded-lg font-bold`}>
-                                            <p>{statusLabel[user.status]}</p>
+                                        <div className={`w-fit flex items-center gap-2  ${statusBadge[user.status].class} border p-1 rounded-lg font-bold`}>
+                                            <Icon className="h-4 w-4" />
+                                            <p>{statusBadge[user.status].label}</p>
                                         </div>
                                     </td>
                                     <td className='p-3'>
