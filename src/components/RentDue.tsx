@@ -1,6 +1,40 @@
-import { ClockFading, Coins, HandCoins, Siren } from 'lucide-react'
+import { CheckCircle, Clock, ClockFading, Cog, Coins, Eye, HandCoins, RefreshCw, Siren, XCircle, type LucideIcon } from 'lucide-react'
+import rentDueData from '../data/rent-due-mock-data'
+import { formatDate } from '../utils/fromatDate';
+import { formatCurrency } from '../utils/formatCurrency';
+import type { RentStatus } from '../types';
+
+type Badge = {
+    label: string; 
+    class: string; 
+    icon: LucideIcon;
+}
+
+const RentBadge:Record <RentStatus , Badge> = {
+    PENDING: {label: "En attente" , class: "text-gray-700 border-gray-200 bg-gray-100", icon: Clock},
+    PAIED: {label: "Payé" , class: "text-green-700 border-green-200 bg-green-100", icon: CheckCircle},
+    PARTIAL: {label: "Partiel" , class: "text-orange-700 border-orange-200 bg-orange-100", icon: Cog},
+    LATE: {label: "En retard" , class: "text-red-700 border-red-200 bg-red-100", icon: XCircle},
+}
 
 const RentDue = () => {
+
+    const currentDate = new Date();
+
+    const currentMonthRent = rentDueData.filter((rent) => {
+        const rentDate = new Date(rent.month)
+
+        return ( rentDate.getMonth() == currentDate.getMonth() && rentDate.getFullYear() == currentDate.getFullYear() )
+    })
+
+    const formattedRent = currentMonthRent.map((rent) => ({
+        mois: rent.month,
+        tenant: rent.lease.tenant.username,
+        adresse: rent.lease.property.address,
+        montant: rent.amount_due_day,
+        status: rent.status
+    }))
+
   return (
     <div className='mt-5 lg:mt-10 shadow-lg border rounded-lg bg-white'>
         {/* id, locataire, propriété, start_date, end-date */}
@@ -56,29 +90,37 @@ const RentDue = () => {
                     </tr>
                 </thead>
                 <tbody className='text-xs md:text-sm lg:text-sm'>
-                    {/* {
-                        leases.map(lease => {
+                    {
+                        formattedRent.map(rentDue => {
+                            const Icon = RentBadge[rentDue.status].icon;
                             return (
                                 <tr className='border-b-gray-200 border-b hover:bg-gray-50'>
-                                    <td className='whitespace-nowrap p-3'>{lease.id}</td>
-                                    <td className='whitespace-nowrap p-3 '>{lease.property.owner.username}</td>
-                                    <td className='whitespace-nowrap p-3' >{lease.tenant.username}</td>
-                                    <td className='whitespace-nowrap p-3'>{lease.start_date}</td>
-                                    <td className='whitespace-nowrap p-3'>{lease.end_date ? lease.end_date : "-- -- --"}</td>
+                                    <td className='whitespace-nowrap p-3 font-bold text-gray-700'>{formatDate(rentDue.mois)}</td>
+                                    <td className='whitespace-nowrap p-3 '>{rentDue.tenant}</td>
+                                    <td className='whitespace-nowrap p-3' >{rentDue.adresse}</td>
+                                    <td className='whitespace-nowrap p-3 text-green-700 font-bold'>
+                                        {formatCurrency (rentDue.montant)}
+                                    </td>
+                                    <td className='whitespace-nowrap p-3'>
+                                        <div className={`w-fit flex items-center gap-2  ${RentBadge[rentDue.status].class} border p-1 rounded-lg font-bold`}>
+                                            <Icon className="h-4 w-4" />
+                                            <p>{RentBadge[rentDue.status].label}</p>
+                                        </div>
+                                    </td>
                                     <td className='p-3'>
                                         <div className='flex items-center gap-3 justify-center'>
                                             <button className="p-1 lg:p-2 rounded-lg bg-white shadow border hover:bg-blue-50 hover:border-blue-200">
                                                 <Eye className="h-4 w-4 text-blue-600" />
                                             </button>
                                             <button className="p-1 lg:p-2 rounded-lg bg-white shadow border hover:bg-blue-50 hover:border-blue-200">
-                                                <Download className="h-4 w-4 text-gray-700" />
+                                                <RefreshCw className="h-4 w-4 text-red-700" />
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                             )
                         })
-                    } */}
+                    }
                 </tbody>
             </table>
         </div>
