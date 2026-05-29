@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Properties from '../components/Properties'
 import UsersList from '../components/UsersList'
 import Leases from '../components/Leases'
+import RentDue from '../components/RentDue'
 
 type menuItem = {
     title: string,
@@ -89,7 +90,7 @@ const AdminDashboard = () => {
                 </div>
             </div>
             {/* stats users */}
-            <div className='mt-5 grid grid-cols-1 lg:grid-cols-4 gap-4'>
+            <div className='mt-5 grid grid-cols-2 lg:grid-cols-4 gap-4'>
                 <div className='bg-white rounded-xl shadow-md p-5 flex items-center justify-between'>
                     <div>
                         <p className='text-sm text-gray-500'>Manager</p>
@@ -152,11 +153,7 @@ const AdminDashboard = () => {
                 }
 
                 {
-                    menu == "Loyers" && (
-                        <div>
-                            Loyers
-                        </div>
-                    )
+                    menu == "Loyers" && <RentDue/>
                 }
             </div>
         </div>
