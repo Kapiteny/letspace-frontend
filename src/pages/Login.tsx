@@ -1,14 +1,61 @@
 import { Building2, CalendarDays, Home, Wallet,Eye,EyeOff } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { getCurrentUser, loginUser } from '../services/authServices';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
+
     const navigate = useNavigate();
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
-    } 
+    }
+
+    const handleChange = (e: any) => {
+        const {name, value} = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        try {
+            const data = await loginUser(formData);
+
+            localStorage.setItem("access_token", data.access);
+            localStorage.setItem("refresh_token", data.refresh);
+
+            const {user} = await getCurrentUser();
+
+            if (user.role === "ADMIN") {
+                console.log("Connecté en tant que admin")
+                navigate("/dashboard");
+            }
+
+            if (user.role === "TENANT") {
+                console.log('connecté en tant que client')
+            }
+
+            if (user.role === "MANAGER") {
+                console.log('connecté en tant que manager')
+            }
+
+            if (user.role === "OWNER") {
+                console.log('connecté en tant que propriétaire')
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
   return (
     <div className="min-h-screen flex">
         {/* left side */}
@@ -54,7 +101,7 @@ const Login = () => {
             </div>
         </div>
         {/* right side */}
-        <div className='w-full m-4 lg:w-1/2 flex justify-center items-center bg-gradient-to-br from-gray-50 to-white'>
+        <div className='w-full lg:w-1/2 flex justify-center items-center bg-gradient-to-br from-gray-50 to-white'>
             <div className='max-w-md w-full rounded border p-6 shadow-lg bg-white'>
                 {/* card header */}
                 <div className='flex items-center flex-col mb-6 gap-2'>
@@ -63,10 +110,17 @@ const Login = () => {
                 </div>
                 {/* card content */}
                 <div className='text-sm'>
-                    <form onSubmit={() => navigate('/dashboard')}>
+                    <form onSubmit={(e) => handleSubmit(e)}>
                         <div className='flex flex-col gap-1 mb-2'>
                             <label>Adresse email</label>
-                            <input className='border rounded-md border-gray-500 text-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ' type="text" placeholder='exemple@gmail.com'/>
+                            <input 
+                                className='border rounded-md border-gray-500 text-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 ' 
+                                type="text" 
+                                placeholder='exemple@gmail.com'
+                                name='email'
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className='relative flex flex-col gap-1 mb-2'>
                             <label>Mot de passe</label>
@@ -74,6 +128,9 @@ const Login = () => {
                                 className='border rounded-md border-gray-500 text-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blues-500' 
                                 type={showPassword ? "text" : "password"} 
                                 placeholder='*******'
+                                name='password'
+                                value={formData.password}
+                                onChange={handleChange}
                             />
                             <div className='absolute top-8 right-1 cursor-pointer' onClick={handleShowPassword} title={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}>
                                 {
